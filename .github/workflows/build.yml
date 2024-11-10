@@ -49,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./DockerFile.database  # Cambiar a DockerFile.database
+          file: ./DockerFile.database  # Cambiar a DockerFile.database ....
           tags: gabrielgutierrezquispe/movibus-backend:v1
           push: true
 
