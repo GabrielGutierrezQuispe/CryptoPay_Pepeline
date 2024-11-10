@@ -48,7 +48,7 @@ function RegisterPage() {
     }
 
     try {
-      const response = await fetch('https://upgraded-carnival-v95vwj4qj76cv9v-5000.app.github.dev/register', {
+      const response = await fetch('https://redesigned-space-telegram-rqxgw59pvrp3579v-5000.app.github.dev/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

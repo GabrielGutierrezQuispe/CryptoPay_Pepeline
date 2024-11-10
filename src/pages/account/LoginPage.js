@@ -115,7 +115,7 @@ function LoginPage() {
     }
 
     try {
-      const response = await fetch('https://upgraded-carnival-v95vwj4qj76cv9v-5000.app.github.dev/login', {
+      const response = await fetch('https://redesigned-space-telegram-rqxgw59pvrp3579v-5000.app.github.dev/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ metamaskAddress }),

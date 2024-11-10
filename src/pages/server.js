@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -9,7 +10,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-const mongoUri = 'mongodb+srv://gabrielgutierrezq:rlM9Eq5qjWA7S268@artemio.uowgugn.mongodb.net/ARTEMIO?retryWrites=true&w=majority';
+const mongoUri = process.env.URL_DATABASE;
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
