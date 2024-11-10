@@ -39,7 +39,7 @@ const PurchasesPage = () => {
     // Llamada a la API para obtener las rutas
     const fetchRoutes = async () => {
       try {
-        const response = await fetch("http://localhost:5000/routes");
+        const response = await fetch("https://upgraded-carnival-v95vwj4qj76cv9v-5000.app.github.dev/routes");
         const data = await response.json();
         setRoutes(data);
       } catch (error) {

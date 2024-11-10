@@ -21,7 +21,7 @@ const ProfilePage = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/user/${metamaskAddress}`)
+    fetch(`https://upgraded-carnival-v95vwj4qj76cv9v-5000.app.github.dev/user/${metamaskAddress}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Error al obtener los datos del usuario');

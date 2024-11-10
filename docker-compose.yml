@@ -1,0 +1,23 @@
+services:
+  frontend:
+    image: gabrielgutierrezquispe/movibus:v1
+    ports:
+      - "80:80"  
+    depends_on:
+      - database
+
+  database:
+    image: gabrielgutierrezquispe/movibus-backend:v1
+    ports:
+      - "5000:5000"  
+    environment:
+      MONGO_URL: "mongodb://mongo:27017/mydb"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db

@@ -48,7 +48,7 @@ function RegisterPage() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/register', {
+      const response = await fetch('https://upgraded-carnival-v95vwj4qj76cv9v-5000.app.github.dev/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
