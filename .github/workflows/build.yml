@@ -2,9 +2,10 @@ name: Build
 on:
   push:
     branches:
-      - develop # Rama de evaluación :)
+      - develop  # Rama de evaluación
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   sonarcloud:
     name: SonarCloud
@@ -12,14 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis 
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-        #Configuración con docker-compose  
   docker:
     name: Docker Deployment
     runs-on: ubuntu-latest
@@ -37,20 +37,29 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Determine version tag
+        id: versioning
+        run: |
+          # Extract the current date in YYYYMMDD format
+          DATE=$(date +'%Y%m%d')
+          # Use the GitHub run number to create an incremental version
+          VERSION="${DATE}-v${{ github.run_number }}"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
       - name: Build and push frontend image
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile  # Asegúrate de que esta ruta sea correcta
-          tags: gabrielgutierrezquispe/movibus:v1
+          tags: gabrielgutierrezquispe/movibus:${{ env.VERSION }}
           push: true
 
       - name: Build and push database image
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./DockerFile.database  # Cambiar a DockerFile.database ....
-          tags: gabrielgutierrezquispe/movibus-backend:v1
+          file: ./DockerFile.database  # Cambiar a DockerFile.database
+          tags: gabrielgutierrezquispe/movibus-backend:${{ env.VERSION }}
           push: true
 
       - name: Install Docker Compose
@@ -60,4 +69,4 @@ jobs:
 
       - name: Deploy using Docker Compose
         run: |
-          docker-compose -f docker-compose.yml up -d
+          docker-compose -f docker-compose.yml up -d
