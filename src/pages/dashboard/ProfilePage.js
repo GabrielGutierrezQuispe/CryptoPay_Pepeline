@@ -21,7 +21,7 @@ const ProfilePage = () => {
       return;
     }
 
-    fetch(`https://redesigned-space-telegram-rqxgw59pvrp3579v-5000.app.github.dev/user/${metamaskAddress}`)
+    fetch(`https://stunning-adventure-qjxq65rpx9r2xxwj-5000.app.github.dev/user/${metamaskAddress}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Error al obtener los datos del usuario');

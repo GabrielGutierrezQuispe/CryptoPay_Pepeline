@@ -39,7 +39,7 @@ const PurchasesPage = () => {
     // Llamada a la API para obtener las rutas
     const fetchRoutes = async () => {
       try {
-        const response = await fetch("https://redesigned-space-telegram-rqxgw59pvrp3579v-5000.app.github.dev/routes");
+        const response = await fetch("https://stunning-adventure-qjxq65rpx9r2xxwj-5000.app.github.dev/routes");
         const data = await response.json();
         setRoutes(data);
       } catch (error) {
