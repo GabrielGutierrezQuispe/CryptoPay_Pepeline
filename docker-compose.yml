@@ -1,13 +1,13 @@
 services:
   frontend:
-    image: gabrielgutierrezquispe/movibus:v1
+    image: gabrielgutierrezquispe/movibus:20241111-v10
     ports:
       - "80:80"  
     depends_on:
       - database
 
   database:
-    image: gabrielgutierrezquispe/movibus-backend:v1
+    image: gabrielgutierrezquispe/movibus-backend:20241111-v10
     ports:
       - "5000:5000"  
     environment:
